@@ -8,20 +8,24 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProgressComponent } from './pages/progress/progress.component';
 import { Graficas1Component } from './pages/graficas1/graficas1.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { PromesasComponent } from './pages/promesas/promesas.component';
+import { RxjsComponent } from './pages/rxjs/rxjs.component';
 
 
 const routes: Routes = [
   { path: '', component: PagesComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'progress', component: ProgressComponent },
-      { path: 'graficas1', component: Graficas1Component },
-      { path: 'account-settings', component: AccountSettingsComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+      { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+      { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
+      { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
+      { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+      { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
+      { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajuste del Tema' } },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
 },
   { path: 'login', component: LoginComponent },
-  {path: 'register', component: RegisterComponent},  
+  {path: 'register', component: RegisterComponent},
   { path: '**', component: NopagefoundComponent },
 ];
 
