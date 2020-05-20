@@ -10,22 +10,46 @@ import { Graficas1Component } from './pages/graficas1/graficas1.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { PromesasComponent } from './pages/promesas/promesas.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
+import { LoginGuardGuard } from './services/guards/login-guard.guard';
 
 
 const routes: Routes = [
-  { path: '', component: PagesComponent,
+  {
+    path: '',
+    component: PagesComponent,
+    canActivate: [LoginGuardGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-      { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
-      { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
-      { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { titulo: 'Dashboard' },
+      },
+      {
+        path: 'progress',
+        component: ProgressComponent,
+        data: { titulo: 'Progress' },
+      },
+      {
+        path: 'graficas1',
+        component: Graficas1Component,
+        data: { titulo: 'Graficas' },
+      },
+      {
+        path: 'promesas',
+        component: PromesasComponent,
+        data: { titulo: 'Promesas' },
+      },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajuste del Tema' } },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
-    ]
-},
+      {
+        path: 'account-settings',
+        component: AccountSettingsComponent,
+        data: { titulo: 'Ajuste del Tema' },
+      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    ],
+  },
   { path: 'login', component: LoginComponent },
-  {path: 'register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent },
   { path: '**', component: NopagefoundComponent },
 ];
 
