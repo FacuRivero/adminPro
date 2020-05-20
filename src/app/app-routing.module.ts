@@ -11,6 +11,7 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { PromesasComponent } from './pages/promesas/promesas.component';
 import { RxjsComponent } from './pages/rxjs/rxjs.component';
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
         component: AccountSettingsComponent,
         data: { titulo: 'Ajuste del Tema' },
       },
+      { path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
