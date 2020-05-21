@@ -34,8 +34,6 @@ export class SubirArchivoService {
 
     xhr.open('PUT', url, true);
 
-    console.log(url);
-
     xhr.send( formData );
 
     })
