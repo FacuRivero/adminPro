@@ -31,7 +31,6 @@ export class UsuariosComponent implements OnInit {
   cargarUsuarios() {
     this.cargando = true;
     this.usuarioService.cargarUsuarios(this.desde).subscribe( (resp: any) => {
-      console.log(resp);
       this.totalRegistros = resp.total;
       this.usuarios = resp.usuarios;
 
@@ -57,6 +56,7 @@ export class UsuariosComponent implements OnInit {
   buscarUsuario ( termino: string) {
 
     if(termino.length <= 0) {
+      this.cargarUsuarios();
       return;
     }
 
@@ -86,7 +86,6 @@ export class UsuariosComponent implements OnInit {
         if (borrar.value === true) {
           this.usuarioService.borrarUsuario(usuario._id).subscribe(
             borrado => {
-              console.log(borrado);
               this.cargarUsuarios();
             }
           )

@@ -9,7 +9,6 @@ export class ImagenPipe implements PipeTransform {
   transform(img: string, tipo: string = 'usuario' ): unknown {
     
     let url = URL_SERVICIOS + '/img';
-    console.log(img);
     if (!img) {
     return url + '/usuarios/xx';
   }
@@ -29,15 +28,13 @@ export class ImagenPipe implements PipeTransform {
       break;
 
     case 'hospital':
-      url += '/hospitals/' + img;
+      url += '/hospitales/' + img;
       break;
 
       default:
         console.log('tipo imagen no existe, usuario,medico,hospital');
         url += '/usuarios/xx';
   }
-
-  console.log(url);
     return url;
   }
 
