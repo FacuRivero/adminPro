@@ -4,11 +4,15 @@ declare function init_plugins();
 
 @Component({
   selector: 'app-nopagefound',
+  styleUrls: ['./nopagefound.component.css'],
   templateUrl: './nopagefound.component.html',
   styles: [
   ]
 })
 export class NopagefoundComponent implements OnInit {
+
+
+  anio: number = new Date().getFullYear();
 
   constructor() { }
 

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { UsuarioService } from '../services/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 
 declare function init_plugins();
 
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   forma: FormGroup;
 
   constructor( public usuarioService: UsuarioService,
-              public router: Router) { }
+               public router: Router) { }
 
   sonIguales( campo1: string, campo2: string) {
     return (group: FormGroup) => {
@@ -76,7 +77,13 @@ export class RegisterComponent implements OnInit {
       this.forma.value.password
       );
 
-      this.usuarioService.crearUsuario(usuario).subscribe( (resp) => this.router.navigate(['/login']));
+    this.usuarioService.crearUsuario(usuario).subscribe( (resp) => {
+        this.router.navigate(['/login'])
+      }, (err: any) => {
+        console.log(err);
+        Swal.fire(err.error.mensaje, err.error.errors.message, 'error');
+        return Observable.throw(err);
+      })
   }
 
 }
