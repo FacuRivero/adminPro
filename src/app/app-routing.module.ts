@@ -18,6 +18,7 @@ import { MedicosComponent } from './pages/medicos/medicos.component';
 import { MedicoComponent } from './pages/medicos/medico.component';
 import { BusquedaComponent } from './pages/busqueda/busqueda.component';
 import { AdminGuard } from './services/guards/admin.guard';
+import { VerificaTokenGuard } from './services/guards/verifica-token.guard';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [VerificaTokenGuard],
         data: { titulo: 'Dashboard' },
       },
       {
